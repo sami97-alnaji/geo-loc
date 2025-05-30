@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "167545988750",
+    "firebase_url": "https://get-loc-usa-mahmod-default-rtdb.firebaseio.com",
+    "project_id": "get-loc-usa-mahmod",
+    "storage_bucket": "get-loc-usa-mahmod.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:167545988750:android:a893899d8f63189c964bdf",
+        "android_client_info": {
+          "package_name": "com.geoloc.geo_loc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIq8hw0HPMUBDeyxBoVi76bsJUE6AoKeE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

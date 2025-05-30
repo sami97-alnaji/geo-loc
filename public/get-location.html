@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Share Your Location</title>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js"></script>
+</head>
+
+<body>
+    <h2>Please allow access to your location</h2>
+    <p id="status">Requesting location...</p>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAcDfxF5FNBnYQeO0QoPrLKAtU9TRUno7s",
+            authDomain: "get-loc-usa-mahmod.firebaseapp.com",
+            databaseURL: "https://get-loc-usa-mahmod-default-rtdb.firebaseio.com",
+            projectId: "get-loc-usa-mahmod",
+            storageBucket: "get-loc-usa-mahmod.firebasestorage.app",
+            messagingSenderId: "167545988750",
+            appId: "1:167545988750:web:d4992196d7b7b8a5964bdf",
+            measurementId: "G-Y149NQ6ZC2",
+            databaseURL: "https://get-loc-usa-mahmod-default-rtdb.firebaseio.com/"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        function getUserId() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get("userId");
+        }
+
+        function sendLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const userId = getUserId();
+                    db.ref("locations/" + userId).set({
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
+                        timestamp: Date.now()
+                    }).then(() => {
+                        document.getElementById("status").innerText = "Location sent successfully!";
+                    });
+                }, (error) => {
+                    document.getElementById("status").innerText = "Error: " + error.message;
+                });
+            } else {
+                document.getElementById("status").innerText = "Geolocation is not supported.";
+            }
+        }
+
+        window.onload = sendLocation;
+    </script>
+</body>
+
+</html>
